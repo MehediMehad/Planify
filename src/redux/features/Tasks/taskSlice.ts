@@ -16,6 +16,22 @@ const initialState: InitialState = {
       isComplete: false,
       priority: "High",
     },
+    {
+      id: "0002",
+      title: "Initial Task2",
+      description: "This is the initial task",
+      dueDate: "2025-11",
+      isComplete: false,
+      priority: "Medium",
+    },
+    {
+      id: "0003",
+      title: "Initial Task3",
+      description: "This is the initial task",
+      dueDate: "2025-11",
+      isComplete: false,
+      priority: "Low",
+    },
   ],
   filter: "Medium",
 };
