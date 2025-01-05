@@ -9,6 +9,7 @@ const Navbar = () => {
         <h1 className="ml-2 text-2xl font-bold">Planify</h1>
       </Link>
       <Link to="/">Tasks</Link>
+      <Link to="/users">User</Link>
       <div className="ml-auto">
         <ModeToggle />
       </div>
