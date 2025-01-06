@@ -6,7 +6,8 @@ import {
   deleteTask,
   toggleCompleteState,
 } from "@/redux/features/Tasks/taskSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { selectUsers } from "@/redux/features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { ITask } from "@/types";
 import { Trash2 } from "lucide-react";
 interface TProps {
@@ -15,6 +16,8 @@ interface TProps {
 
 const TaskCard = ({ task }: TProps) => {
   const dispatch = useAppDispatch();
+  const users = useAppSelector(selectUsers);
+  const assignedUser = users.find((user) => user.id === task.assignedTo);
 
   return (
     <div>
@@ -56,6 +59,7 @@ const TaskCard = ({ task }: TProps) => {
             <Checkbox onClick={() => dispatch(toggleCompleteState(task.id))} />
           </div>
         </div>
+        <p>Assigned To - {assignedUser ? assignedUser.name : "No one"} </p>
         <p className="mt-5">{task.description}</p>
       </div>
     </div>

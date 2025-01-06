@@ -37,11 +37,13 @@ import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
-import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addTask } from "@/redux/features/Tasks/taskSlice";
 import { ITask } from "@/types";
+import { selectUsers } from "@/redux/features/user/userSlice";
 
 export function AddTasksModel() {
+  const users = useAppSelector(selectUsers);
   const form = useForm();
   const dispatch = useAppDispatch();
 
@@ -112,6 +114,33 @@ export function AddTasksModel() {
                         <SelectItem value={Priority.Low}>Low</SelectItem>
                         <SelectItem value={Priority.Medium}>Medium</SelectItem>
                         <SelectItem value={Priority.High}>Hight</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormDescription />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* Assigned To User */}
+            <FormField
+              control={form.control}
+              name="assignedTo"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Assigned To</FormLabel>
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className="">
+                        <SelectValue placeholder="Select a User to set" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {users.map((user) => (
+                          <SelectItem value={user.id}>{user.name}</SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </FormControl>

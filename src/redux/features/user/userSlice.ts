@@ -8,11 +8,11 @@ interface InitialState {
 const initialState: InitialState = {
   users: [
     {
-      id: "sssss",
+      id: "0001",
       name: "Mehedi",
     },
     {
-      id: "ssss",
+      id: "0002",
       name: "Robin",
     },
   ],

@@ -16,12 +16,16 @@ const initialState: InitialState = {
       isCompleted: false,
       priority: "High",
       dueDate: "2025-01-14T18:00:00.000Z",
+      assignedTo: null,
     },
   ],
   filter: "All",
 };
 
-type DraftTask = Pick<ITask, "title" | "description" | "dueDate" | "priority">;
+type DraftTask = Pick<
+  ITask,
+  "title" | "description" | "dueDate" | "priority" | "assignedTo"
+>;
 
 const createTask = (taskData: DraftTask): ITask => {
   return {
