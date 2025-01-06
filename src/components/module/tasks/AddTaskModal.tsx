@@ -55,6 +55,7 @@ export function AddTasksModel() {
     console.log(data);
     dispatch(addTask(data as ITask));
     setOpen(!open);
+    form.reset();
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
